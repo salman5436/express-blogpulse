@@ -6,10 +6,13 @@
 
 <p><%= article.content %></p>
 
-<hr />
+<p> <% article.comments.forEach((comment) => { %>
+  <h5> Comment By: <%= comment.dataValues.name %></h5>
+  <p> <%= comment.dataValues.content %></p>
+<% }) %>
 
 <div>
-  <form method="POST" action="/articles/:id">
+  <form method="POST" action='/articles/<%= article.id %>/comments'>
     <label for="name">Name:</label>
     <input type="text" class="form-control" id="name" name="name" required>
     

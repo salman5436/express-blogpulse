@@ -46,14 +46,14 @@ router.get('/:id', function(req, res) {
   })
 })
 
-router.post('/articles/:id/comments', (req, res) => {
+router.post('/:id/comments', (req, res) => {
   db.comment.create({
     name: req.body.name,
     content: req.body.content,
-    articleId: req.body.authorId
+    articleId: req.params.id
   }).then(function(comment) {
     console.log(comment.get())
-    res.send(comment.data)
+    res.redirect(`/articles/${req.params.id}`)
   }).catch(function(error) {
     console.log('💩💩💩💩💩💩💩💩💩💩');
     console.log(error);
