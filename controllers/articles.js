@@ -46,6 +46,7 @@ router.get('/:id', function(req, res) {
   })
 })
 
+//POST route then will be based on the article at id which the form passed through so we can build the comment at that id
 router.post('/:id/comments', (req, res) => {
   db.comment.create({
     name: req.body.name,
